@@ -32,6 +32,15 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
+		
+				<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>2.9.3</version>
+		</dependency>
+		
+	
 		<!-- final dos import do jackson -->
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-messaging -->
@@ -40,12 +49,7 @@
 			<artifactId>spring-messaging</artifactId>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jsr310</artifactId>
-			<version>2.9.3</version>
-		</dependency>
+
 
 
 		<dependency>
