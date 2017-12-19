@@ -9,7 +9,4 @@ import spring.models.Cliente;
 public interface LoginRepository extends JpaRepository<Cliente,Integer>{
 
 	Cliente findByLoginAndSenha(String login,String senha);
-	
-	
-	
 }

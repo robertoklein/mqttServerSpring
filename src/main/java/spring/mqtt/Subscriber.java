@@ -1,6 +1,5 @@
 package spring.mqtt;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -14,6 +13,8 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.client.RestTemplate;
 
 import spring.models.DataMqtt;
 import spring.service.DataMqttService;
@@ -54,28 +55,19 @@ public class Subscriber implements MqttCallback{
 			System.out.println("a data was insert into the topic: " + topicResult);
 			System.out.println("the msg is: " + result);
 	
-			
-			
-		
-
 			DataMqtt data = new DataMqtt();
 			data.setMessage(result);
 			data.setTopic(topicResult);
 			
-			LocalDateTime agora = LocalDateTime.now();
-			DateTimeFormatter formatador = DateTimeFormatter
-			  .ofLocalizedDateTime(FormatStyle.SHORT)
-			  .withLocale(new Locale("pt", "br"));
-			agora.format(formatador); //08/04/14 10:02
-			
-			data.setData(agora);
+			LocalDateTime agora = LocalDateTime.now();			
+			data.setDate(agora);
 			
 			mqttService.insereData(data);
 		}
-		
 
 		@Override
 		public void deliveryComplete(IMqttDeliveryToken token) {
 			System.out.println("entrou no delivery complete");
-		}	
+		}
+
 }
