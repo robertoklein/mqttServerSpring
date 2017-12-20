@@ -10,6 +10,8 @@ public class Publisher {
 private MqttClient client ;
 	
 	private static final int  QOS = 1;
+	private String topic;
+	private String message;
 	
 	public Publisher(String topic, String message) throws MqttException{
 		

@@ -2,15 +2,12 @@ appCliente.controller("principalController", function($scope,$http,$location,$st
 
 	$scope.listaDataMqtt = [];
 
+	/**
+	 * funcao para listar os dados de temperatura coletados pelo sensor
+	 */
 	$scope.listaDados = function(){
 		$http.get("/listaDados").then(function(response){
 			$scope.listaDataMqtt = response.data;
-			
-			for(i = 0; i < $scope.listaDataMqtt.length; i++){
-				console.log("valor da data: " + $scope.listaDataMqtt[i].date.dayOfMonth);
-			}
-			
-			
 		} , function(response){
 			console.log("falha " + response);
 		});
@@ -18,11 +15,13 @@ appCliente.controller("principalController", function($scope,$http,$location,$st
 
 	$scope.listaDados();
 
+	/**
+	 * funcao para conectar com o websocker, e setar os listners nos topicos
+	 */
 	$scope.connect = function() {
 		$stomp.connect('/endpoint',{})
 		.then(function (frame){
 			var subscription = $stomp.subscribe('/topic/notify', function(payload, headers, res){
-				console.log("result do res: " + res.body);
 				$scope.listaDataMqtt.push(JSON.parse(res.body));	
 				$scope.$apply();
 			}, {
@@ -32,41 +31,26 @@ appCliente.controller("principalController", function($scope,$http,$location,$st
 	}
 	$scope.connect();
 	
-	$scope.formata = function(mqttData){
-		
-		
-	}
-
-	/*
-	function setConnected(connected) {
-		if (connected) {
-			stompClient.subscribe('/topic/notify', function (response) {
-				console.log("entrou log do setConected: " + response);
-				$scope.listaDataMqtt.push(JSON.parse(response.body));
-				$scope.$apply();
-			});
-		}
-		else {
-			console.log("nao esta conectado!!!");
-		}
-	}
-	var stompClient = null;
-
-	$scope.connect = function() {
-		var socket = new SockJS('/endpoint');
-		stompClient = Stomp.over(socket);
-		stompClient.connect({}, function (frame) {
-			setConnected(true);
-			console.log('Connected: ' + frame);
+	/**
+	 * funcao para ligar o led
+	 */
+	$scope.ligaLed = function(){
+		$http.get("/ligaLed").then(function(response){
+			console.log("ligou o led");
+		} , function(response){
+			console.log("falha ao ligar o led " + response);
+		});
+	}	
+	
+	/**
+	 * funcao para desligar o led
+	 */
+	$scope.desligaLed = function(){
+		$http.get("/desligaLed").then(function(response){
+			console.log("desligou o led");
+		} , function(response){
+			console.log("falha ao desligar o led " + response);
 		});
 	}
-
-	$scope.connect();
-
-	$scope.envia = function(){
-		stompClient.send("/app/notify");
-		//stompClient.send("/topic/notify");
-	}
-	 */
-
+	
 });

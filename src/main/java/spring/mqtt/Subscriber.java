@@ -25,8 +25,6 @@ public class Subscriber implements MqttCallback{
 	@Autowired
 	DataMqttService mqttService;
 	
-	//private static final int  QOS = 1;
-	
 		public Subscriber() throws MqttException{
 		
 			MqttClient client = Connection.getClient();
@@ -51,10 +49,7 @@ public class Subscriber implements MqttCallback{
 			
 			String result = new String(message.getPayload());
 			String topicResult = topic;
-			
-			System.out.println("a data was insert into the topic: " + topicResult);
-			System.out.println("the msg is: " + result);
-	
+
 			DataMqtt data = new DataMqtt();
 			data.setMessage(result);
 			data.setTopic(topicResult);

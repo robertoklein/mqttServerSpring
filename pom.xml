@@ -33,14 +33,12 @@
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
 		
-				<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+				<!-- dependencia para formatar data -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
 			<version>2.9.3</version>
 		</dependency>
-		
-	
 		<!-- final dos import do jackson -->
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-messaging -->
@@ -48,9 +46,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-messaging</artifactId>
 		</dependency>
-
-
-
 
 		<dependency>
 			<groupId>org.webjars</groupId>

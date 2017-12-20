@@ -17,7 +17,6 @@ public class DataMqttService {
 	private SimpMessagingTemplate template;
 
 	public void insereData(DataMqtt data) {
-		System.out.println("dentro do insereData");
 		mqttRepository.save(data);
 		this.template.convertAndSend("/topic/notify",data);	
 	}
