@@ -14,10 +14,17 @@ public class Connection {
 												};
 
 		// ----- DADOS DE CONEXAO ----- 
-		public static final String HOST_NAME = "m14.cloudmqtt.com";
-		public static final int PORT_NUMBER = 19616;
-		public static final String USERNAME = "axxfrycf";
-		public static final String PASSWORD = "qAdD5bpKyIk4";
+		//public static final String HOST_NAME = "m14.cloudmqtt.com";
+		//public static final int PORT_NUMBER = 19616;
+		//public static final String USERNAME = "axxfrycf";
+		//public static final String PASSWORD = "qAdD5bpKyIk4";
+		
+		// ----- DADOS DE CONEXAO LOCAL ----- 
+		public static final String HOST_NAME = "localhost";
+		public static final int PORT_NUMBER = 1883;
+		//public static final String USERNAME = "axxfrycf";
+		//public static final String PASSWORD = "qAdD5bpKyIk4";
+		
 
 		
 		public static MqttClient getClient() throws MqttException {
@@ -31,8 +38,8 @@ public class Connection {
 		public static MqttConnectOptions getOptions() {
 			MqttConnectOptions conOpt = new MqttConnectOptions();
 	        conOpt.setCleanSession(true);
-	        conOpt.setUserName(USERNAME);
-	        conOpt.setPassword(PASSWORD.toCharArray());
+	        //conOpt.setUserName(USERNAME);
+	        //conOpt.setPassword(PASSWORD.toCharArray());
 	        return conOpt;
 		}
 	
